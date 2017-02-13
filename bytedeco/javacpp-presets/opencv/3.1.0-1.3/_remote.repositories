@@ -1,0 +1,11 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Jan 31 11:45:59 JST 2017
+opencv-3.1.0-1.3.pom>central=
+opencv-3.1.0-1.3-android-arm.jar>central=
+opencv-3.1.0-1.3-sources.jar>central=
+opencv-3.1.0-1.3-android-x86.jar>central=
+opencv-3.1.0-1.3-linux-ppc64le.jar>central=
+opencv-3.1.0-1.3-windows-x86_64.jar>central=
+opencv-3.1.0-1.3-macosx-x86_64.jar>central=
+opencv-3.1.0-1.3-linux-x86_64.jar>central=
+opencv-3.1.0-1.3.jar>central=
