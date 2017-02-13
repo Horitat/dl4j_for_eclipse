@@ -1,0 +1,163 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.atilika.kuromoji</groupId>
+    <artifactId>kuromoji</artifactId>
+    <version>0.9.0</version>
+    <packaging>pom</packaging>
+
+    <name>Kuromoji</name>
+    <description>A Japanese morphological analyzer</description>
+    <url>https://github.com/atilika/kuromoji</url>
+
+    <organization>
+        <name>Atilika Inc.</name>
+        <url>http://www.atilika.com</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:atilika/kuromoji.git</connection>
+        <developerConnection>scm:git:git@github.com:atilika/kuromoji.git</developerConnection>
+        <url>git@github.com:atilika/kuromoji.git</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <junit.version>4.11</junit.version>
+        <randomizedtesting.version>2.1.16</randomizedtesting.version>
+    </properties>
+
+    <modules>
+        <module>kuromoji-core</module>
+        <module>kuromoji-ipadic</module>
+        <module>kuromoji-jumandic</module>
+        <module>kuromoji-naist-jdic</module>
+        <module>kuromoji-unidic</module>
+        <module>kuromoji-unidic-kanaaccent</module>
+        <module>kuromoji-benchmark</module>
+    </modules>
+
+    <developers>
+        <developer>
+            <id>gaute</id>
+            <name>Gaute Lambertsen</name>
+            <email>gaute@atilika.com</email>
+            <organization>Atilika Inc.</organization>
+            <organizationUrl>http://www.atilika.com</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Asia/Tokyo</timezone>
+        </developer>
+        <developer>
+            <id>christian</id>
+            <name>Christian Moen</name>
+            <email>christian@atilika.com</email>
+            <organization>Atilika Inc.</organization>
+            <organizationUrl>http://www.atilika.com</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Asia/Tokyo</timezone>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <name>Nexus Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.3</version>
+                        <configuration>
+                            <compilerArgs>
+                                <arg>-Xlint:all</arg>
+                            </compilerArgs>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <excludeResources>true</excludeResources>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <version>2.8.2</version>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
