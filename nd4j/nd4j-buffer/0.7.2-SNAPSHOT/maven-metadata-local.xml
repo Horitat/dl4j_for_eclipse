@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>org.nd4j</groupId>
+  <artifactId>nd4j-buffer</artifactId>
+  <version>0.7.2-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <localCopy>true</localCopy>
+    </snapshot>
+    <lastUpdated>20170131013543</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <classifier>sources</classifier>
+        <extension>jar</extension>
+        <value>0.7.2-SNAPSHOT</value>
+        <updated>20170131013543</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>0.7.2-SNAPSHOT</value>
+        <updated>20170131013543</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>0.7.2-SNAPSHOT</value>
+        <updated>20170131013543</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <classifier>javadoc</classifier>
+        <extension>jar</extension>
+        <value>0.7.2-SNAPSHOT</value>
+        <updated>20161221034416</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>

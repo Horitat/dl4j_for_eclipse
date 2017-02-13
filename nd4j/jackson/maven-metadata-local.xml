@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.nd4j</groupId>
+  <artifactId>jackson</artifactId>
+  <versioning>
+    <versions>
+      <version>0.7.2-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20170131013539</lastUpdated>
+  </versioning>
+</metadata>

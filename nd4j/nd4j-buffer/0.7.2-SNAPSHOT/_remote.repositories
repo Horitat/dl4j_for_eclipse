@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Jan 31 10:35:43 JST 2017
+nd4j-buffer-0.7.2-SNAPSHOT.pom>=
+nd4j-buffer-0.7.2-SNAPSHOT-sources.jar>=
+nd4j-buffer-0.7.2-SNAPSHOT-javadoc.jar>=
+nd4j-buffer-0.7.2-SNAPSHOT.jar>=

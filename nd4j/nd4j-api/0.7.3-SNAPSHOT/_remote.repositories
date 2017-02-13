@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Wed Feb 01 15:29:07 JST 2017
+nd4j-api-0.7.3-SNAPSHOT.jar>=
+nd4j-api-0.7.3-SNAPSHOT-sources.jar>=
+nd4j-api-0.7.3-SNAPSHOT-tests.jar>=
+nd4j-api-0.7.3-SNAPSHOT.pom>=
