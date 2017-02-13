@@ -1,0 +1,52 @@
+package deeplearning4j_scaleout.spark.dl4j_spark_nlp.src.main.java.org.deeplearning4j.spark.text.functions;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
+
+import org.apache.spark.Accumulator;
+import org.apache.spark.api.java.function.Function2;
+//import org.deeplearning4j.berkeley.Counter;
+
+import deeplearning4j_nn.src.main.java.org.deeplearning4j.berkeley.Counter;
+
+/**
+ * @author jeffreytang
+ */
+public class FoldWithinPartitionFunction implements Function2<Integer, Iterator<AtomicLong>, Iterator<AtomicLong>> {
+
+    public FoldWithinPartitionFunction(Accumulator<Counter<Integer>> maxPartitionAcc) {
+        this.maxPerPartitionAcc = maxPartitionAcc;
+    }
+
+    private Accumulator<Counter<Integer>> maxPerPartitionAcc;
+
+
+    @Override
+    public Iterator<AtomicLong> call(Integer ind, Iterator<AtomicLong> partition) throws Exception {
+
+        List<AtomicLong> foldedItemList = new ArrayList<AtomicLong>() {{ add(new AtomicLong(0L)); }};
+
+        // Recurrent state implementation of cum sum
+        int foldedItemListSize = 1;
+        while (partition.hasNext()) {
+            long curPartitionItem = partition.next().get();
+            int lastFoldedIndex = foldedItemListSize - 1;
+            long lastFoldedItem = foldedItemList.get(lastFoldedIndex).get();
+            AtomicLong sumLastCurrent = new AtomicLong(curPartitionItem + lastFoldedItem);
+
+            foldedItemList.set(lastFoldedIndex, sumLastCurrent);
+            foldedItemList.add(sumLastCurrent);
+            foldedItemListSize += 1;
+        }
+
+        // Update Accumulator
+        long maxFoldedItem = foldedItemList.remove(foldedItemListSize - 1).get();
+        Counter<Integer> partitionIndex2maxItemCounter = new Counter<>();
+        partitionIndex2maxItemCounter.incrementCount(ind, maxFoldedItem);
+        maxPerPartitionAcc.add(partitionIndex2maxItemCounter);
+
+        return foldedItemList.iterator();
+    }
+}

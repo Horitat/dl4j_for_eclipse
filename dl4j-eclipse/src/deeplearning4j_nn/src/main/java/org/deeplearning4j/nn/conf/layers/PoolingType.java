@@ -1,0 +1,8 @@
+package deeplearning4j_nn.src.main.java.org.deeplearning4j.nn.conf.layers;
+
+/**
+ * Created by Alex on 17/01/2017.
+ */
+public enum PoolingType {
+    MAX, AVG, SUM, PNORM, NONE
+}
