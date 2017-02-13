@@ -1,0 +1,11 @@
+pip install py4j
+
+eclipseの設定
+ウィンドウの設定を開く
+Javaのコンパイラーのエラー/警告を開く
+Null分析にある注釈ﾍﾞｰｽnull分析を使用可能にするにチェック
+null仕様のデフォルト注釈を使用するの構成をクリック
+javax.annotation.Nullable
+javax.annotation.NonNull
+を該当のテキストフィールドに入力
+jsr305-2.0.3.jarにパスを通す
